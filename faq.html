@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs | GreenHarvest Uganda</title>
+    <meta name="description" content="Find answers to common questions about GreenHarvest Uganda's organic products, ordering, delivery, and farming practices.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png" type="image/png">
+</head>
+<body>
+    <!-- Navigation (Consistent with other pages) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/logo.png" alt="GreenHarvest Uganda Logo" width="40" height="40" class="d-inline-block align-top me-2">
+                <span class="brand-text">
+                    <span class="fw-bold">GreenHarvest</span>
+                    <small class="d-block d-lg-inline slogan">Naturally Nourishing Uganda</small>
+                </span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">
+                            <i class="fas fa-leaf me-1"></i> Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle me-1"></i> About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">
+                            <i class="fas fa-newspaper me-1"></i> Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">
+                            <i class="fas fa-envelope me-1"></i> Contact
+                        </a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link btn btn-outline-light position-relative" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FAQ Header -->
+    <header class="faq-header py-5 mt-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-4 fw-bold text-white mb-3">FAQs</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">FAQs</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="lead text-white-50 mb-0">Find answers to common questions</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- FAQ Search Section -->
+    <section class="faq-search py-4 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0">
+                            <i class="fas fa-search text-muted"></i>
+                        </span>
+                        <input type="text" class="form-control form-control-lg border-start-0" id="faqSearch" placeholder="Search our FAQs...">
+                        <button class="btn btn-success" type="button">Search</button>
+                    </div>
+                    <div class="popular-tags mt-3 text-center">
+                        <span class="badge bg-secondary me-2 mb-2">#ordering</span>
+                        <span class="badge bg-secondary me-2 mb-2">#delivery</span>
+                        <span class="badge bg-secondary me-2 mb-2">#payments</span>
+                        <span class="badge bg-secondary me-2 mb-2">#organic</span>
+                        <span class="badge bg-secondary me-2 mb-2">#farmvisits</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main FAQ Content -->
+    <section class="faq-main py-5">
+        <div class="container">
+            <div class="row">
+                <!-- FAQ Categories Sidebar -->
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <div class="card border-0 shadow-sm sticky-top" style="top: 100px;">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">Categories</h5>
+                        </div>
+                        <div class="list-group list-group-flush">
+                            <a href="#ordering" class="list-group-item list-group-item-action active">
+                                <i class="fas fa-shopping-cart me-2"></i> Ordering
+                            </a>
+                            <a href="#delivery" class="list-group-item list-group-item-action">
+                                <i class="fas fa-truck me-2"></i> Delivery
+                            </a>
+                            <a href="#payments" class="list-group-item list-group-item-action">
+                                <i class="fas fa-credit-card me-2"></i> Payments
+                            </a>
+                            <a href="#products" class="list-group-item list-group-item-action">
+                                <i class="fas fa-leaf me-2"></i> Products
+                            </a>
+                            <a href="#farming" class="list-group-item list-group-item-action">
+                                <i class="fas fa-tractor me-2"></i> Farming Practices
+                            </a>
+                            <a href="#visits" class="list-group-item list-group-item-action">
+                                <i class="fas fa-map-marked-alt me-2"></i> Farm Visits
+                            </a>
+                            <a href="#account" class="list-group-item list-group-item-action">
+                                <i class="fas fa-user me-2"></i> My Account
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Content -->
+                <div class="col-lg-9">
+                    <!-- Ordering Section -->
+                    <div class="faq-section mb-5" id="ordering">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-circle bg-success bg-opacity-10 text-success me-3">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h2 class="mb-0">Ordering Questions</h2>
+                        </div>
+                        
+                        <div class="accordion" id="orderingAccordion">
+                            <!-- Question 1 -->
+                            <div class="accordion-item mb-3 border-0 shadow-sm">
+                                <h3 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                        How do I place an order?
+                                    </button>
+                                </h3>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#orderingAccordion">
+                                    <div class="accordion-body">
+                                        <p>You can place orders in three ways:</p>
+                                        <ol>
+                                            <li><strong>Online:</strong> Browse our <a href="products.html">products page</a>, add items to your cart, and proceed through checkout.</li>
+                                            <li><strong>Phone:</strong> Call our sales team at <a href="tel:+256700123456">+256 700 123456</a> during business hours.</li>
+                                            <li><strong>In-person:</strong> Visit our farm store at 123 Organic Farm Road, Kampala.</li>
+                                        </ol>
+                                        <p class="mb-0">Online orders can be placed 24/7.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 2 -->
+                            <div class="accordion-item mb-3 border-0 shadow-sm">
+                                <h3 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                        Is there a minimum order amount?
+                                    </button>
+                                </h3>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#orderingAccordion">
+                                    <div class="accordion-body">
+                                        <p>For delivery orders within Kampala, we have a minimum order of <strong>UGX 50,000</strong> to ensure efficient delivery operations. There's no minimum for:</p>
+                                        <ul>
+                                            <li>Pickup orders at our farm</li>
+                                            <li>Wholesale accounts</li>
+                                            <li>Special event orders</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 3 -->
+                            <div class="accordion-item mb-3 border-0 shadow-sm">
+                                <h3 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                        Can I modify or cancel my order after placing it?
+                                    </button>
+                                </h3>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#orderingAccordion">
+                                    <div class="accordion-body">
+                                        <p>Order modifications are possible within <strong>1 hour</strong> of placement for online orders. After this window:</p>
+                                        <ul>
+                                            <li><strong>Before processing:</strong> Call us immediately at <a href="tel:+256700123456">+256 700 123456</a> - we may be able to help</li>
+                                            <li><strong>During processing:</strong> Changes cannot be made but you can refuse delivery</li>
+                                        </ul>
+                                        <p class="mb-0">For wholesale orders, please contact your account manager for modifications.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Delivery Section -->
+                    <div class="faq-section mb-5" id="delivery">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-circle bg-success bg-opacity-10 text-success me-3">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <h2 class="mb-0">Delivery Questions</h2>
+                        </div>
+                        
+                        <div class="accordion" id="deliveryAccordion">
+                            <!-- Question 1 -->
+                            <div class="accordion-item mb-3 border-0 shadow-sm">
+                                <h3 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                        What areas do you deliver to?
+                                    </button>
+                                </h3>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#deliveryAccordion">
+                                    <div class="accordion-body">
+                                        <p>We currently offer direct delivery to these areas:</p>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6 class="mt-2">Kampala Metro</h6>
+                                                <ul>
+                                                    <li>Central Kampala</li>
+                                                    <li>Kololo</li>
+                                                    <li>Naguru</li>
+                                                    <li>Ntinda</li>
+                                                    <li>Bukoto</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="mt-2">Outer Areas</h6>
+                                                <ul>
+                                                    <li>Entebbe (+UGX 10,000 fee)</li>
+                                                    <li>Wakiso (+UGX 7,500 fee)</li>
+                                                    <li>Gayaza (+UGX 12,000 fee)</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0">For other locations, we partner with SafeBoda and other delivery services - contact us for arrangements.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 2 -->
+                            <div class="accordion-item mb-3 border-0 shadow-sm">
+                                <h3 class="accordion-header" id="headingFive">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                                        How long does delivery take?
+                                    </button>
+                                </h3>
+                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#deliveryAccordion">
+                                    <div class="accordion-body">
+                                        <p>Delivery times vary by location and order time:</p>
+                                        <table class="table table-bordered">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Order Placed</th>
+                                                    <th>Kampala</th>
+                                                    <th>Outer Areas</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Before 10 AM</td>
+                                                    <td>Same day by 4 PM</td>
+                                                    <td>Next day by 12 PM</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10 AM - 2 PM</td>
+                                                    <td>Same day by 7 PM</td>
+                                                    <td>Next day by 4 PM</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>After 2 PM</td>
+                                                    <td>Next day by 12 PM</td>
+                                                    <td>Next day by 4 PM</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p class="mb-0"><em>Note:</em> Weekend orders placed after Friday 2 PM will be delivered Monday.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Products Section -->
+                    <div class="faq-section mb-5" id="products">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-circle bg-success bg-opacity-10 text-success me-3">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h2 class="mb-0">Product Questions</h2>
+                        </div>
+                        
+                        <div class="accordion" id="productsAccordion">
+                            <!-- Question 1 -->
+                            <div class="accordion-item mb-3 border-0 shadow-sm">
+                                <h3 class="accordion-header" id="headingSix">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix">
+                                        Are all your products certified organic?
+                                    </button>
+                                </h3>
+                                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#productsAccordion">
+                                    <div class="accordion-body">
+                                        <p>Yes! All GreenHarvest products meet strict organic standards:</p>
+                                        <ul>
+                                            <li><strong>Uganda Organic Certification:</strong> Certified by UOCB since 2017 (Certificate #UOC-45231)</li>
+                                            <li><strong>International Standards:</strong> Selected products also carry ECOCERT and USDA Organic certifications</li>
+                                        </ul>
+                                        <p>We're proud to be one of Uganda's few fully-certified organic farms. You can view our certificates at our farm or <a href="#" data-bs-toggle="modal" data-bs-target="#certificatesModal">view them online</a>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Question 2 -->
+                            <div class="accordion-item mb-3 border-0 shadow-sm">
+                                <h3 class="accordion-header" id="headingSeven">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven">
+                                        How should I store my organic produce?
+                                    </button>
+                                </h3>
+                                <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#productsAccordion">
+                                    <div class="accordion-body">
+                                        <p>Proper storage maximizes freshness and shelf life:</p>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h6><i class="fas fa-carrot text-success me-2"></i> Vegetables</h6>
+                                                <ul>
+                                                    <li><strong>Leafy greens:</strong> Damp cloth in crisper (3-5 days)</li>
+                                                    <li><strong>Root vegetables:</strong> Cool, dark place (1-2 weeks)</li>
+                                                    <li><strong>Tomatoes:</strong> Countertop until ripe, then fridge</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6><i class="fas fa-apple-alt text-success me-2"></i> Fruits</h6>
+                                                <ul>
+                                                    <li><strong>Avocados:</strong> Ripen on counter, refrigerate when ripe</li>
+                                                    <li><strong>Passion fruits:</strong> Room temperature (1 week)</li>
+                                                    <li><strong>Bananas:</strong> Separate stems, avoid refrigeration</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0">All produce is best consumed within 3 days of delivery for peak freshness.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- More sections for Payments, Farming, Visits, Account -->
+                    <!-- ... (similar structure to above sections) ... -->
+                    
+                    <!-- Still Need Help? -->
+                    <div class="card border-0 shadow-sm mt-5 bg-success text-white">
+                        <div class="card-body text-center p-5">
+                            <h3 class="mb-3">Still have questions?</h3>
+                            <p class="lead mb-4">Our team is ready to help you with any additional questions.</p>
+                            <a href="contact.html" class="btn btn-light btn-lg px-4 me-2">
+                                <i class="fas fa-envelope me-2"></i> Contact Us
+                            </a>
+                            <a href="tel:+256700123456" class="btn btn-outline-light btn-lg px-4">
+                                <i class="fas fa-phone me-2"></i> Call Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Modal -->
+    <div class="modal fade" id="certificatesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Our Organic Certificates</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <img src="images/certificates/uganda-organic.jpg" class="card-img-top" alt="Uganda Organic Certification">
+                                <div class="card-body">
+                                    <h6>Uganda Organic Certification</h6>
+                                    <p class="small text-muted">Issued: March 2017 | Renewal: Annual</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <img src="images/certificates/ecocert.jpg" class="card-img-top" alt="ECOCERT Certification">
+                                <div class="card-body">
+                                    <h6>ECOCERT International</h6>
+                                    <p class="small text-muted">Issued: June 2019 | Renewal: Biennial</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Consistent with other pages) -->
+    <footer class="bg-dark text-white pt-5 pb-4">
+        <!-- Same footer as index.html -->
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-success btn-lg back-to-top shadow">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    
+    <!-- FAQ Page JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Search Functionality
+            const faqSearch = document.getElementById('faqSearch');
+            if (faqSearch) {
+                faqSearch.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const questions = document.querySelectorAll('.accordion-button');
+                    
+                    questions.forEach(question => {
+                        const questionText = question.textContent.toLowerCase();
+                        const accordionItem = question.closest('.accordion-item');
+                        
+                        if (questionText.includes(searchTerm)) {
+                            accordionItem.style.display = 'block';
+                            // Auto-expand matching questions
+                            if (searchTerm.length > 2) {
+                                const collapse = accordionItem.querySelector('.accordion-collapse');
+                                new bootstrap.Collapse(collapse, { toggle: true });
+                            }
+                        } else {
+                            accordionItem.style.display = 'none';
+                        }
+                    });
+                });
+            }
+            
+            // Category navigation highlighting
+            const faqSections = document.querySelectorAll('.faq-section');
+            const navLinks = document.querySelectorAll('.list-group-item');
+            
+            function highlightNav() {
+                let currentSection = '';
+                
+                faqSections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.scrollY >= sectionTop - 150 && 
+                        window.scrollY < sectionTop + sectionHeight - 150) {
+                        currentSection = '#' + section.id;
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightNav);
+            highlightNav(); // Run on initial load
+            
+            // Initialize tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+</body>
+</html>

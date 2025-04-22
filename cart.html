@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart | GreenHarvest Uganda</title>
+    <meta name="description" content="Review and manage your organic produce order. Fresh vegetables, fruits, and herbs from Uganda's premier organic farm.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png" type="image/png">
+</head>
+<body>
+    <!-- Navigation (Consistent with other pages) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/logo.png" alt="GreenHarvest Uganda Logo" width="40" height="40" class="d-inline-block align-top me-2">
+                <span class="brand-text">
+                    <span class="fw-bold">GreenHarvest</span>
+                    <small class="d-block d-lg-inline slogan">Naturally Nourishing Uganda</small>
+                </span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">
+                            <i class="fas fa-leaf me-1"></i> Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle me-1"></i> About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">
+                            <i class="fas fa-newspaper me-1"></i> Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-envelope me-1"></i> Contact
+                        </a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link btn btn-outline-light position-relative" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Header -->
+    <header class="cart-header py-5 mt-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-4 fw-bold text-white mb-3">Your Cart</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="lead text-white-50 mb-0">Review your organic selections</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Main Section -->
+    <section class="cart-main py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Cart Items -->
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-light">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h5 class="mb-0">Your Order</h5>
+                                </div>
+                                <div class="col-md-6 text-md-end">
+                                    <span id="itemCount">0 items</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <!-- Empty Cart State -->
+                            <div class="empty-cart text-center py-5" id="emptyCart">
+                                <i class="fas fa-shopping-cart fa-4x text-muted mb-3"></i>
+                                <h4>Your cart is empty</h4>
+                                <p class="text-muted mb-4">Start adding some organic goodness!</p>
+                                <a href="products.html" class="btn btn-success px-4">
+                                    <i class="fas fa-leaf me-2"></i> Shop Now
+                                </a>
+                            </div>
+                            
+                            <!-- Cart Items Table -->
+                            <div class="table-responsive d-none" id="cartItemsTable">
+                                <table class="table align-middle">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th scope="col" width="100">Product</th>
+                                            <th scope="col">Details</th>
+                                            <th scope="col" width="120">Price</th>
+                                            <th scope="col" width="150">Quantity</th>
+                                            <th scope="col" width="120">Total</th>
+                                            <th scope="col" width="40"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cartItemsBody">
+                                        <!-- Cart items will be loaded here via JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light d-none" id="cartActions">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Promo code" id="promoCode">
+                                        <button class="btn btn-outline-success" type="button" id="applyPromo">
+                                            Apply
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                                    <button class="btn btn-outline-danger me-2" id="clearCart">
+                                        <i class="fas fa-trash-alt me-1"></i> Clear Cart
+                                    </button>
+                                    <button class="btn btn-success" id="updateCart">
+                                        <i class="fas fa-sync-alt me-1"></i> Update Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Saved for Later -->
+                    <div class="card border-0 shadow-sm d-none" id="savedForLater">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">Saved for Later</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row" id="savedItemsContainer">
+                                <!-- Saved items will appear here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm sticky-top" style="top: 20px;">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">Order Summary</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal:</span>
+                                <span id="subtotal">UGX 0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Delivery:</span>
+                                <span id="delivery">UGX 0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Tax (18%):</span>
+                                <span id="tax">UGX 0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="fw-bold">Discount:</span>
+                                <span class="text-success fw-bold" id="discount">- UGX 0</span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Gift card or promo code" id="promoInput">
+                                <button class="btn btn-outline-success" type="button" id="applyPromoBtn">Apply</button>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="mb-0">Total:</h5>
+                                <h4 class="mb-0 text-success" id="orderTotal">UGX 0</h4>
+                            </div>
+                            <a href="checkout.html" class="btn btn-success w-100 py-2" id="checkoutBtn">
+                                <i class="fas fa-lock me-2"></i> Proceed to Checkout
+                            </a>
+                            <div class="text-center mt-3">
+                                <img src="images/ui-elements/payment-methods.png" alt="Accepted payment methods" class="img-fluid" loading="lazy" style="max-width: 300px;">
+                            </div>
+                            <div class="alert alert-success mt-3 mb-0">
+                                <i class="fas fa-shipping-fast me-2"></i>
+                                <strong>Free delivery</strong> on orders over UGX 100,000
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recommended Products -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">You May Also Like</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row" id="recommendedProducts">
+                                <!-- Recommended products will be loaded here via JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Consistent with other pages) -->
+    <footer class="bg-dark text-white pt-5 pb-4">
+        <!-- Same footer as index.html -->
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-success btn-lg back-to-top shadow">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    
+    <!-- Cart Page JS -->
+    <script>
+        // Cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize cart from localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+            
+            // DOM Elements
+            const cartItemsBody = document.getElementById('cartItemsBody');
+            const emptyCart = document.getElementById('emptyCart');
+            const cartItemsTable = document.getElementById('cartItemsTable');
+            const cartActions = document.getElementById('cartActions');
+            const savedForLater = document.getElementById('savedForLater');
+            const savedItemsContainer = document.getElementById('savedItemsContainer');
+            const recommendedProducts = document.getElementById('recommendedProducts');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            
+            // Update cart display
+            function updateCartDisplay() {
+                // Update cart count in navbar
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                document.getElementById('cartCount').textContent = totalItems;
+                document.getElementById('itemCount').textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'items'}`;
+                
+                // Show empty state or cart items
+                if (cart.length === 0) {
+                    emptyCart.classList.remove('d-none');
+                    cartItemsTable.classList.add('d-none');
+                    cartActions.classList.add('d-none');
+                    checkoutBtn.classList.add('disabled');
+                } else {
+                    emptyCart.classList.add('d-none');
+                    cartItemsTable.classList.remove('d-none');
+                    cartActions.classList.remove('d-none');
+                    checkoutBtn.classList.remove('disabled');
+                    
+                    // Render cart items
+                    cartItemsBody.innerHTML = '';
+                    cart.forEach((item, index) => {
+                        const itemTotal = item.price * item.quantity;
+                        cartItemsBody.innerHTML += `
+                            <tr>
+                                <td>
+                                    <img src="${item.image}" class="img-fluid rounded" alt="${item.name}" style="width: 80px;">
+                                </td>
+                                <td>
+                                    <h6 class="mb-1">${item.name}</h6>
+                                    <small class="text-muted">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</small>
+                                    <div class="mt-2">
+                                        <button class="btn btn-sm btn-outline-secondary save-for-later" data-index="${index}">
+                                            <i class="far fa-bookmark me-1"></i> Save for later
+                                        </button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="price">UGX ${item.price.toLocaleString()}</span>
+                                </td>
+                                <td>
+                                    <div class="input-group input-group-sm">
+                                        <button class="btn btn-outline-secondary minus-btn" type="button" data-index="${index}">-</button>
+                                        <input type="number" class="form-control text-center quantity-input" value="${item.quantity}" min="1" max="10" data-index="${index}">
+                                        <button class="btn btn-outline-secondary plus-btn" type="button" data-index="${index}">+</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="fw-bold">UGX ${itemTotal.toLocaleString()}</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-danger remove-item" data-index="${index}">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                }
+                
+                // Update saved items display
+                if (savedItems.length > 0) {
+                    savedForLater.classList.remove('d-none');
+                    savedItemsContainer.innerHTML = '';
+                    savedItems.forEach((item, index) => {
+                        savedItemsContainer.innerHTML += `
+                            <div class="col-md-6 mb-3">
+                                <div class="card saved-item">
+                                    <div class="row g-0">
+                                        <div class="col-4">
+                                            <img src="${item.image}" class="img-fluid rounded-start" alt="${item.name}" style="height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="card-body py-2">
+                                                <h6 class="card-title mb-1">${item.name}</h6>
+                                                <p class="card-text text-success mb-1">UGX ${item.price.toLocaleString()}</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <button class="btn btn-sm btn-outline-success move-to-cart" data-index="${index}">
+                                                        <i class="fas fa-cart-plus me-1"></i> Add
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger remove-saved" data-index="${index}">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                } else {
+                    savedForLater.classList.add('d-none');
+                }
+                
+                // Update order summary
+                updateOrderSummary();
+                
+                // Load recommended products
+                loadRecommendedProducts();
+            }
+            
+            // Update order summary
+            function updateOrderSummary() {
+                const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                const deliveryFee = subtotal >= 100000 ? 0 : 5000; // Free delivery over UGX 100,000
+                const tax = subtotal * 0.18; // 18% VAT
+                const discount = 0; // Would be calculated from promo codes
+                const total = subtotal + deliveryFee + tax - discount;
+                
+                document.getElementById('subtotal').textContent = `UGX ${subtotal.toLocaleString()}`;
+                document.getElementById('delivery').textContent = `UGX ${deliveryFee.toLocaleString()}`;
+                document.getElementById('tax').textContent = `UGX ${tax.toLocaleString()}`;
+                document.getElementById('discount').textContent = `- UGX ${discount.toLocaleString()}`;
+                document.getElementById('orderTotal').textContent = `UGX ${total.toLocaleString()}`;
+                
+                // Update delivery message
+                const deliveryAlert = document.querySelector('.alert');
+                if (subtotal >= 100000) {
+                    deliveryAlert.classList.add('alert-success');
+                    deliveryAlert.classList.remove('alert-info');
+                    deliveryAlert.innerHTML = '<i class="fas fa-check-circle me-2"></i><strong>Free delivery</strong> applied to your order';
+                } else {
+                    const amountNeeded = 100000 - subtotal;
+                    deliveryAlert.classList.add('alert-info');
+                    deliveryAlert.classList.remove('alert-success');
+                    deliveryAlert.innerHTML = `<i class="fas fa-info-circle me-2"></i>Add <strong>UGX ${amountNeeded.toLocaleString()}</strong> more for free delivery`;
+                }
+            }
+            
+            // Load recommended products
+            function loadRecommendedProducts() {
+                // In a real app, this would come from an API based on cart items
+                const recommendations = [
+                    {
+                        id: 7,
+                        name: "Organic Ginger",
+                        price: 3500,
+                        image: "images/products/ginger.jpg",
+                        category: "herbs"
+                    },
+                    {
+                        id: 12,
+                        name: "Organic Pineapples",
+                        price: 4000,
+                        image: "images/products/pineapple.jpg",
+                        category: "fruits"
+                    },
+                    {
+                        id: 5,
+                        name: "Organic Tomatoes",
+                        price: 2500,
+                        image: "images/products/tomatoes.jpg",
+                        category: "vegetables"
+                    },
+                    {
+                        id: 9,
+                        name: "Organic Passion Fruits",
+                        price: 3000,
+                        image: "images/products/passion-fruit.jpg",
+                        category: "fruits"
+                    }
+                ];
+                
+                recommendedProducts.innerHTML = '';
+                recommendations.forEach(product => {
+                    recommendedProducts.innerHTML += `
+                        <div class="col-md-6 col-lg-3 mb-3">
+                            <div class="card h-100">
+                                <img src="${product.image}" class="card-img-top" alt="${product.name}" loading="lazy">
+                                <div class="card-body">
+                                    <h6 class="card-title">${product.name}</h6>
+                                    <p class="card-text text-success fw-bold">UGX ${product.price.toLocaleString()}</p>
+                                </div>
+                                <div class="card-footer bg-white border-0">
+                                    <button class="btn btn-sm btn-success w-100 add-recommended" 
+                                            data-id="${product.id}"
+                                            data-name="${product.name}"
+                                            data-price="${product.price}"
+                                            data-image="${product.image}">
+                                        <i class="fas fa-cart-plus me-1"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            // Event Delegation for Cart Actions
+            document.addEventListener('click', function(e) {
+                // Quantity minus button
+                if (e.target.classList.contains('minus-btn')) {
+                    const index = parseInt(e.target.dataset.index);
+                    if (cart[index].quantity > 1) {
+                        cart[index].quantity--;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        updateCartDisplay();
+                    }
+                }
+                
+                // Quantity plus button
+                if (e.target.classList.contains('plus-btn')) {
+                    const index = parseInt(e.target.dataset.index);
+                    if (cart[index].quantity < 10) {
+                        cart[index].quantity++;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        updateCartDisplay();
+                    }
+                }
+                
+                // Quantity input change
+                if (e.target.classList.contains('quantity-input')) {
+                    const index = parseInt(e.target.dataset.index);
+                    const newQuantity = parseInt(e.target.value);
+                    
+                    if (!isNaN(newQuantity) && newQuantity >= 1 && newQuantity <= 10) {
+                        cart[index].quantity = newQuantity;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        updateCartDisplay();
+                    } else {
+                        e.target.value = cart[index].quantity; // Reset to previous value
+                    }
+                }
+                
+                // Remove item
+                if (e.target.classList.contains('remove-item') || 
+                    (e.target.parentElement && e.target.parentElement.classList.contains('remove-item'))) {
+                    const button = e.target.classList.contains('remove-item') ? e.target : e.target.parentElement;
+                    const index = parseInt(button.dataset.index);
+                    
+                    cart.splice(index, 1);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartDisplay();
+                    
+                    // Show toast notification
+                    showToast('Item removed from cart');
+                }
+                
+                // Save for later
+                if (e.target.classList.contains('save-for-later') || 
+                    (e.target.parentElement && e.target.parentElement.classList.contains('save-for-later'))) {
+                    const button = e.target.classList.contains('save-for-later') ? e.target : e.target.parentElement;
+                    const index = parseInt(button.dataset.index);
+                    
+                    const itemToSave = cart[index];
+                    savedItems.push(itemToSave);
+                    cart.splice(index, 1);
+                    
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    localStorage.setItem('savedItems', JSON.stringify(savedItems));
+                    updateCartDisplay();
+                    
+                    showToast('Item saved for later');
+                }
+                
+                // Move saved item back to cart
+                if (e.target.classList.contains('move-to-cart') || 
+                    (e.target.parentElement && e.target.parentElement.classList.contains('move-to-cart'))) {
+                    const button = e.target.classList.contains('move-to-cart') ? e.target : e.target.parentElement;
+                    const index = parseInt(button.dataset.index);
+                    
+                    const itemToMove = savedItems[index];
+                    cart.push(itemToMove);
+                    savedItems.splice(index, 1);
+                    
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    localStorage.setItem('savedItems', JSON.stringify(savedItems));
+                    updateCartDisplay();
+                    
+                    showToast('Item added back to cart');
+                }
+                
+                // Remove saved item
+                if (e.target.classList.contains('remove-saved') || 
+                    (e.target.parentElement && e.target.parentElement.classList.contains('remove-saved'))) {
+                    const button = e.target.classList.contains('remove-saved') ? e.target : e.target.parentElement;
+                    const index = parseInt(button.dataset.index);
+                    
+                    savedItems.splice(index, 1);
+                    localStorage.setItem('savedItems', JSON.stringify(savedItems));
+                    updateCartDisplay();
+                    
+                    showToast('Item removed');
+                }
+                
+                // Clear cart
+                if (e.target.id === 'clearCart') {
+                    if (confirm('Are you sure you want to clear your cart?')) {
+                        cart = [];
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        updateCartDisplay();
+                        showToast('Cart cleared');
+                    }
+                }
+                
+                // Update cart
+                if (e.target.id === 'updateCart') {
+                    showToast('Cart updated');
+                }
+                
+                // Add recommended product
+                if (e.target.classList.contains('add-recommended') || 
+                    (e.target.parentElement && e.target.parentElement.classList.contains('add-recommended'))) {
+                    const button = e.target.classList.contains('add-recommended') ? e.target : e.target.parentElement;
+                    const productId = parseInt(button.dataset.id);
+                    const productName = button.dataset.name;
+                    const productPrice = parseFloat(button.dataset.price);
+                    const productImage = button.dataset.image;
+                    
+                    // Check if product already in cart
+                    const existingItem = cart.find(item => item.id === productId);
+                    
+                    if (existingItem) {
+                        if (existingItem.quantity < 10) {
+                            existingItem.quantity++;
+                        }
+                    } else {
+                        cart.push({
+                            id: productId,
+                            name: productName,
+                            price: productPrice,
+                            image: productImage,
+                            quantity: 1
+                        });
+                    }
+                    
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartDisplay();
+                    showToast(`${productName} added to cart`);
+                }
+            });
+            
+            // Show toast notification
+            function showToast(message) {
+                const toast = document.createElement('div');
+                toast.className = 'position-fixed bottom-0 end-0 p-3';
+                toast.style.zIndex = '1100';
+                
+                toast.innerHTML = `
+                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header bg-success text-white">
+                            <strong class="me-auto">Notification</strong>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            ${message}
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.remove();
+                }, 3000);
+            }
+            
+            // Initialize cart display
+            updateCartDisplay();
+        });
+    </script>
+</body>
+</html>

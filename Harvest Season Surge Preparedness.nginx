@@ -1,0 +1,9 @@
+# nginx config for matooke season
+limit_req_zone $binary_remote_addr zone=matooke:10m rate=100r/s;
+
+server {
+    location /checkout {
+        limit_req zone=matooke burst=200;
+        proxy_pass http://checkout_service;
+    }
+}

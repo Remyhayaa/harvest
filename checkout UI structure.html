@@ -1,0 +1,217 @@
+<!-- checkout.html -->
+<div class="container py-5">
+  <!-- Progress Indicator -->
+  <div class="checkout-progress mb-5">
+    <div class="step active" data-step="1">Shipping</div>
+    <div class="step" data-step="2">Payment</div>
+    <div class="step" data-step="3">Review</div>
+  </div>
+
+  <!-- Step 1: Shipping Information -->
+  <form id="shipping-form" class="checkout-step active">
+    <h3 class="mb-4">Delivery Details</h3>
+    
+    <div class="row g-3">
+      <!-- Name -->
+      <div class="col-md-6">
+        <label class="form-label">Full Name*</label>
+        <input type="text" class="form-control" name="name" required 
+               pattern="[A-Za-z ]{3,}" title="At least 3 characters">
+      </div>
+      
+      <!-- Phone -->
+      <div class="col-md-6">
+        <label class="form-label">Phone Number*</label>
+        <div class="input-group">
+          <span class="input-group-text">+256</span>
+          <input type="tel" class="form-control" name="phone" 
+                 pattern="[0-9]{9}" title="9-digit Ugandan number" required>
+        </div>
+      </div>
+      
+      <!-- District Selector -->
+      <div class="col-md-6">
+        <label class="form-label">District*</label>
+        <select class="form-select" name="district" required>
+          <option value="">Select District</option>
+          <option value="Kampala">Kampala</option>
+          <option value="Wakiso">Wakiso</option>
+          <!-- Add all Ugandan districts -->
+        </select>
+      </div>
+      
+      <!-- Delivery Address -->
+      <div class="col-12">
+        <label class="form-label">Detailed Address*</label>
+        <textarea class="form-control" name="address" rows="2" required></textarea>
+      </div>
+      
+      <!-- Delivery Notes -->
+      <div class="col-12">
+        <label class="form-label">Delivery Instructions</label>
+        <textarea class="form-control" name="notes" rows="2" 
+                  placeholder="Gate color, landmarks, etc."></textarea>
+      </div>
+    </div>
+    
+    <div class="d-flex justify-content-between mt-4">
+      <a href="cart.html" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left me-2"></i>Back to Cart
+      </a>
+      <button type="submit" class="btn btn-success">
+        Continue to Payment <i class="fas fa-arrow-right ms-2"></i>
+      </button>
+    </div>
+  </form>
+
+  <!-- Step 2: Payment Method -->
+  <div id="payment-step" class="checkout-step">
+    <h3 class="mb-4">Payment Method</h3>
+    
+    <div class="payment-options">
+      <!-- Mobile Money -->
+      <div class="payment-card selected" data-method="mtn-momo">
+        <div class="payment-icon">
+          <img src="images/payment/mtn-momo.png" alt="MTN Mobile Money">
+        </div>
+        <div class="payment-details">
+          <h5>MTN Mobile Money</h5>
+          <p>Pay instantly via MTN Uganda</p>
+        </div>
+        <div class="payment-check">
+          <i class="fas fa-check-circle"></i>
+        </div>
+      </div>
+      
+      <!-- Credit Card -->
+      <div class="payment-card" data-method="card">
+        <div class="payment-icon">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard ms-2"></i>
+        </div>
+        <div class="payment-details">
+          <h5>Credit/Debit Card</h5>
+          <p>Pay with Visa or Mastercard</p>
+        </div>
+        <div class="payment-check">
+          <i class="far fa-circle"></i>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Payment Form (Dynamically Loaded) -->
+    <div id="payment-form-container" class="mt-4">
+      <!-- MTN Mobile Money Form -->
+      <form id="momo-form" class="payment-form">
+        <div class="mb-3">
+          <label class="form-label">MTN Mobile Number*</label>
+          <div class="input-group">
+            <span class="input-group-text">+256</span>
+            <input type="tel" class="form-control" name="momo-number" 
+                   pattern="77[0-9]{7}|78[0-9]{7}" 
+                   title="MTN Uganda number (77xxxxxx or 78xxxxxx)" required>
+          </div>
+        </div>
+        <div class="alert alert-info">
+          <i class="fas fa-info-circle me-2"></i>
+          You'll receive a Mobile Money prompt on your phone
+        </div>
+      </form>
+    </div>
+    
+    <div class="d-flex justify-content-between mt-4">
+      <button class="btn btn-outline-secondary prev-step">
+        <i class="fas fa-arrow-left me-2"></i>Back
+      </button>
+      <button id="proceed-to-review" class="btn btn-success">
+        Review Order <i class="fas fa-arrow-right ms-2"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Step 3: Order Review -->
+  <div id="review-step" class="checkout-step">
+    <h3 class="mb-4">Review Your Order</h3>
+    
+    <div class="row">
+      <!-- Order Summary -->
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Order Items</h5>
+          </div>
+          <div class="card-body">
+            <div id="order-items" class="list-group list-group-flush">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Delivery Information</h5>
+          </div>
+          <div class="card-body">
+            <div id="delivery-details">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Order Total -->
+      <div class="col-lg-4">
+        <div class="card sticky-top" style="top: 20px;">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Order Total</h5>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-between mb-2">
+              <span>Subtotal:</span>
+              <span id="review-subtotal">UGX 0</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span>Delivery Fee:</span>
+              <span id="review-delivery">UGX 0</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between fw-bold fs-5">
+              <span>Total:</span>
+              <span id="review-total">UGX 0</span>
+            </div>
+            
+            <div class="mt-4">
+              <button id="place-order" class="btn btn-success w-100 py-3">
+                <i class="fas fa-lock me-2"></i>Place Order Securely
+              </button>
+            </div>
+            
+            <div class="mt-3 text-center">
+              <img src="images/payment/secure-checkout.png" alt="Secure Checkout" 
+                   style="height: 40px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="order-success" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body text-center p-5">
+        <div class="mb-4 text-success">
+          <i class="fas fa-check-circle fa-5x"></i>
+        </div>
+        <h3>Order Placed Successfully!</h3>
+        <p class="mb-4">Your order #<span id="order-number"></span> has been received.</p>
+        <div class="d-flex justify-content-center gap-3">
+          <a href="index.html" class="btn btn-outline-secondary">Continue Shopping</a>
+          <a href="order-details.html" class="btn btn-success">View Order</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

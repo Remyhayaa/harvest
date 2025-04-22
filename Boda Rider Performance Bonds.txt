@@ -1,0 +1,15 @@
+// BodaSmartContract.sol - Ethereum-based incentive system
+contract BodaBond {
+    mapping(address => uint) public riderBalances;
+    
+    function deductForLateDelivery(address rider) public {
+        uint penalty = calculatePenalty();
+        riderBalances[rider] -= penalty;
+        distributeToBuyers(penalty * 0.5); // 50% to affected customers
+        burnTokens(penalty * 0.5); // 50% removed from circulation
+    }
+    
+    function rewardOnTime(address rider) public {
+        riderBalances[rider] += 1 ether; // Stablecoin equivalent
+    }
+}

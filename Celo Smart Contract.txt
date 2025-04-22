@@ -1,0 +1,18 @@
+// BodaBond.sol - Deploy on Celo Alfajores testnet
+pragma solidity ^0.8.0;
+
+contract BodaBond {
+    mapping(address => uint256) public balances;
+    address constant TREASURY = 0x...;
+    
+    function depositBond() external payable {
+        require(msg.value == 5 ether, "5 CELO bond required");
+        balances[msg.sender] += msg.value;
+    }
+    
+    function slashLateRider(address rider) external onlyOwner {
+        uint256 penalty = balances[rider] / 2;
+        payable(TREASURY).transfer(penalty);
+        balances[rider] -= penalty;
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "errors": {
+    "insufficient_stock": {
+      "en": "Not enough stock",
+      "lg": "Tewali bintu bingi",
+      "ach": "Peko peko"
+    },
+    "payment_failed": {
+      "en": "Mobile Money payment failed",
+      "lg": "Sente tezattibwa",
+      "ach": "Moni omako peko"
+    }
+  }
+}

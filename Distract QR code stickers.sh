@@ -1,0 +1,1 @@
+qrencode -o farm_qr.png "https://greenharvest.ug/verify?farm=ID123"

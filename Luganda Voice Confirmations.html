@@ -1,0 +1,13 @@
+<!-- Audio element for playback -->
+<audio id="lugandaConfirm">
+  <source src="audios/refund-approved.mp3" type="audio/mpeg">
+  <source src="audios/refund-approved.ogg" type="audio/ogg">
+</audio>
+
+<script>
+  function playConfirmation() {
+    if(navigator.language === 'lg-UG') {
+      document.getElementById('lugandaConfirm').play();
+    }
+  }
+</script>

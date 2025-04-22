@@ -1,0 +1,96 @@
+{
+  "rules": {
+    // 🔒 ATOMIC SECURITY LAYERS
+    "metadata": {
+      "version": { ".read": true, ".write": false },
+      "lastUpdated": { ".read": true, ".write": "auth.token.isAdmin" }
+    },
+
+    // 🚜 PRODUCT CATALOG (With Agri-Tech Extensions)
+    "products": {
+      "$productId": {
+        ".read": "true",  // Public visibility
+        ".write": "auth != null && auth.token.isAdmin",
+        
+        // 🌱 FIELD-LEVEL VALIDATION
+        "name": { 
+          ".validate": "newData.isString() && newData.val().matches(/^[\\w\\s-]{3,50}$/)" 
+        },
+        "price": {
+          ".validate": "newData.isNumber() && 
+                      newData.val() >= 1000 && 
+                      newData.val() <= 1000000"
+        },
+        "organicCert": {
+          ".validate": "newData.val() in ['EU', 'USDA', 'UOCB', null]"
+        },
+        "harvestDate": {
+          ".validate": "newData.isString() && 
+                      newData.val().matches(/^\\d{4}-\\d{2}-\\d{2}$/)"
+        }
+      }
+    },
+
+    // 🛒 UGANDAN-OPTIMIZED ORDER SYSTEM
+    "orders": {
+      "$orderId": {
+        ".read": "auth != null && (
+          auth.uid == resource.data.userId || 
+          auth.token.isAdmin ||
+          auth.token.isDeliveryAgent
+        )",
+        
+        ".write": "auth != null && (
+          (auth.uid == resource.data.userId && 
+           resource.data.status == 'pending') ||
+          (auth.token.isAdmin && 
+           newData.data().status in ['processing', 'shipped', 'delivered']) ||
+          (auth.token.isDeliveryAgent && 
+           newData.data().status in ['shipped', 'delivered'])
+        )",
+        
+        // 📦 STATUS TRANSITION VALIDATION
+        "status": {
+          ".validate": "
+            (resource == null && newData.val() == 'pending') ||
+            (resource.data().status == 'pending' && newData.val() == 'processing') ||
+            (resource.data().status == 'processing' && newData.val() in ['shipped', 'cancelled']) ||
+            (resource.data().status == 'shipped' && newData.val() == 'delivered')
+          "
+        }
+      }
+    },
+
+    // 👨‍🌾 UGANDAN USER PROFILES
+    "users": {
+      "$userId": {
+        ".read": "auth != null && auth.uid == $userId",
+        ".write": "auth != null && auth.uid == $userId",
+        
+        // 📱 MOBILE MONEY INTEGRATION
+        "mobileMoney": {
+          "provider": { ".validate": "newData.val() in ['MTN', 'Airtel', 'Africell']" },
+          "number": { ".validate": "newData.isString() && newData.val().matches(/^\\+2567[0-9]{8}$/)" }
+        },
+        
+        // 🏡 MULTI-LOCATION ADDRESS SYSTEM
+        "addresses": {
+          "$addressId": {
+            "geoHash": { ".validate": "newData.isString()" },
+            "landmark": { ".validate": "newData.isString()" }
+          }
+        }
+      }
+    },
+
+    // 🌍 LOCALIZATION READY
+    "translations": {
+      "productDescriptions": {
+        "$lang": {
+          ".read": true,
+          ".write": "auth.token.isContentManager"
+        }
+      }
+    }
+  }
+}

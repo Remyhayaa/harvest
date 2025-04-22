@@ -1,0 +1,17 @@
+// nfc-writer.ino - Program cards at Kampala HQ
+#include <PN532.h>
+PN532 nfc(5, 6); // Ugandan Arduino clone pins
+
+void setup() {
+  Serial.begin(9600);
+  nfc.begin();
+  nfc.SAMConfig();
+}
+
+void loop() {
+  if (nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, &uid)) {
+    String riderId = generateRiderId(); // GH-BODA-XXX
+    writeNFC(riderId); 
+    printCard(riderId); // Thermal printer
+  }
+}
