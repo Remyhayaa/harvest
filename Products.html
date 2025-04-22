@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles.css">
     
     <!-- Favicon -->
-    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="icon" href="Images/favicon.png" type="image/png">
     
     <!-- Price Range Slider CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
@@ -26,7 +26,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="images/logo.png" alt="GreenHarvest Uganda Logo" width="40" height="40" class="d-inline-block align-top me-2">
+                <img src="Images/logo.png" alt="GreenHarvest Uganda Logo" width="40" height="40" class="d-inline-block align-top me-2">
                 <span class="brand-text">
                     <span class="fw-bold">GreenHarvest</span>
                     <small class="d-block d-lg-inline slogan">Naturally Nourishing Uganda</small>
@@ -232,7 +232,7 @@
                         </div>
                         <div class="card-body">
                             <div class="d-flex mb-3">
-                                <img src="images/products/seasonal-mango.jpg" alt="Seasonal Mangoes" class="rounded me-3" width="60" height="60">
+                                <img src="Images/products/seasonal-mango.jpg" alt="Seasonal Mangoes" class="rounded me-3" width="60" height="60">
                                 <div>
                                     <h6 class="mb-0">Organic Mangoes</h6>
                                     <p class="small text-muted mb-0">UGX 3,500/kg</p>
@@ -246,7 +246,7 @@
                                 </div>
                             </div>
                             <div class="d-flex mb-3">
-                                <img src="images/products/seasonal-pineapple.jpg" alt="Seasonal Pineapples" class="rounded me-3" width="60" height="60">
+                                <img src="Images/products/seasonal-pineapple.jpg" alt="Seasonal Pineapples" class="rounded me-3" width="60" height="60">
                                 <div>
                                     <h6 class="mb-0">Sweet Pineapples</h6>
                                     <p class="small text-muted mb-0">UGX 4,500 each</p>
@@ -444,11 +444,11 @@
                 name: "Organic Sukuma Wiki",
                 price: 2000,
                 oldPrice: 2500,
-                image: "images/products/sukuma.jpg",
-                images: [
-                    "images/products/sukuma.jpg",
-                    "images/products/sukuma-2.jpg",
-                    "images/products/sukuma-3.jpg"
+                image: "Images/products/sukuma.jpg",
+                Images: [
+                    "Images/products/sukuma.jpg",
+                    "Images/products/sukuma-2.jpg",
+                    "Images/products/sukuma-3.jpg"
                 ],
                 category: "vegetables",
                 stock: 15,
@@ -469,10 +469,10 @@
                 name: "Organic Passion Fruits",
                 price: 3000,
                 oldPrice: 3500,
-                image: "images/products/passion-fruit.jpg",
-                images: [
-                    "images/products/passion-fruit.jpg",
-                    "images/products/passion-fruit-2.jpg"
+                image: "Images/products/passion-fruit.jpg",
+                Images: [
+                    "Images/products/passion-fruit.jpg",
+                    "Images/products/passion-fruit-2.jpg"
                 ],
                 category: "fruits",
                 stock: 8,
@@ -547,7 +547,7 @@
                         
                         // Set thumbnails
                         const thumbnails = document.querySelectorAll('.thumbnail');
-                        product.images.forEach((img, index) => {
+                        product.Images.forEach((img, index) => {
                             if (thumbnails[index]) {
                                 thumbnails[index].src = img;
                                 thumbnails[index].alt = `${product.name} ${index + 1}`;
